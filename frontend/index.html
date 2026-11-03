@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff7f0">
+  <title>A Little Photobooth ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@500;600;700&family=VT323&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div class="grain-page"></div>
+  <div class="floaties" id="floaties" aria-hidden="true"></div>
+
+  <!-- ============ WELCOME ============ -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-card">
+      <div class="welcome-stickers" aria-hidden="true">
+        <img class="cutout-badge ws ws-tl" src="stickers/sticker_1.png" data-sticker="s1" alt="">
+        <img class="cutout-badge ws ws-tr" src="stickers/sticker_4.png" data-sticker="s4" alt="">
+        <img class="cutout-badge ws ws-bl" src="stickers/sticker_5.png" data-sticker="s5" alt="">
+        <img class="cutout-badge ws ws-br" src="stickers/sticker_3.png" data-sticker="s3" alt="">
+      </div>
+      <div class="welcome-content">
+        <div class="mini-strip" aria-hidden="true">
+          <div class="f"><img src="stickers/sticker_8.png" data-sticker="s8" alt=""></div>
+          <div class="f"><img src="stickers/sticker_7.png" data-sticker="s7" alt=""></div>
+          <div class="f"><img src="stickers/sticker_6.png" data-sticker="s6" alt=""></div>
+          <div class="f"><img src="stickers/sticker_2.png" data-sticker="s2" alt=""></div>
+          <small>♡</small>
+        </div>
+        <p class="eyebrow" id="w-eyebrow" hidden></p>
+        <h1 id="w-title">A Little Photobooth ♡</h1>
+        <p class="subtitle" id="w-sub" hidden></p>
+        <button id="btn-enter" class="btn btn-primary btn-xl" type="button">
+          <span id="btn-enter-label">Enter Photobooth</span> <span aria-hidden="true">♡</span>
+        </button>
+        <div>
+          <p class="fine script" id="w-note">Love you Baby ♡</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOTH ============ -->
+  <section id="screen-booth" class="screen">
+    <header class="booth-top">
+      <button class="icon-btn no-shoot" id="btn-home" type="button" aria-label="Back to welcome">♡</button>
+      <div class="booth-brand">
+        <img class="cutout-badge" src="stickers/sticker_7.png" data-sticker="s7" alt="">
+        <span class="booth-title">Love you Adriana ♡</span>
+        <img class="cutout-badge" src="stickers/sticker_2.png" data-sticker="s2" alt="">
+      </div>
+      <button class="icon-btn no-shoot" id="btn-switch" type="button" aria-label="Switch camera">⟲</button>
+    </header>
+
+    <div class="stage" id="stage">
+      <div class="vf-wrap">
+        <img class="vf-peek-top cutout-badge" src="stickers/sticker_5.png" data-sticker="s5" alt="">
+        <div class="viewfinder" id="viewfinder">
+          <video id="video" playsinline muted autoplay></video>
+          <div class="vf-msg" id="vf-msg">Starting camera…</div>
+          <div class="fx" id="fx"></div>
+          <div class="stickers" id="stickers"></div>
+          <div class="photo-text" id="photo-text"></div>
+          <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+          <div class="vf-hint" id="vf-hint"></div>
+          <div class="countdown" id="countdown"></div>
+          <img class="freeze" id="freeze" alt="">
+          <div class="flash" id="flash"></div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-rail" id="filter-rail" aria-label="Filters"></div>
+
+    <footer class="booth-controls">
+      <img class="controls-mascot left cutout-badge" src="stickers/sticker_1.png" data-sticker="s1" alt="">
+      <img class="controls-mascot right cutout-badge" src="stickers/sticker_3.png" data-sticker="s3" alt="">
+      <div class="mode-toggle no-shoot">
+        <button type="button" data-mode="strip" class="active">Strip ×4</button>
+        <button type="button" data-mode="photo">Single</button>
+      </div>
+      <div class="shutter-row">
+        <button class="round-btn no-shoot" id="btn-extras" type="button"><b>✨</b><span>Stickers</span></button>
+        <button id="btn-shutter" class="shutter" type="button" aria-label="Take photo"><span></span></button>
+        <button class="round-btn no-shoot" id="btn-timer" type="button"><b>⏱</b><span id="timer-label">3s</span></button>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ============ REVIEW ============ -->
+  <section id="screen-review" class="screen">
+    <header class="top-simple">
+      <button class="icon-btn" id="btn-review-back" type="button" aria-label="Back">←</button>
+      <h2><img class="cutout-badge" src="stickers/sticker_4.png" data-sticker="s4" alt=""><span id="review-title">Your photos</span></h2>
+      <span class="spacer"></span>
+    </header>
+    <div class="review-body">
+      <div class="review-banner">
+        <img class="cutout-badge" src="stickers/sticker_8.png" data-sticker="s8" alt="">
+        <span>Love you Babyyy ♡</span>
+        <img class="cutout-badge" src="stickers/sticker_6.png" data-sticker="s6" alt="">
+      </div>
+      <div class="review-grid" id="review-grid"></div>
+    </div>
+    <footer class="bottom-actions">
+      <button id="btn-review-booth" class="btn btn-ghost" type="button">Back to booth</button>
+      <button id="btn-make-strip" class="btn btn-primary" type="button">Make my strip ♡</button>
+    </footer>
+  </section>
+
+  <!-- ============ DESIGNER ============ -->
+  <section id="screen-design" class="screen">
+    <header class="top-simple">
+      <button class="icon-btn" id="btn-design-back" type="button" aria-label="Back">←</button>
+      <h2><img class="cutout-badge" src="stickers/sticker_7.png" data-sticker="s7" alt=""><span>Design your strip</span></h2>
+      <span class="spacer"></span>
+    </header>
+    <div class="design-body">
+      <div class="design-preview" id="design-preview">
+        <img class="design-preview-mascot left cutout-badge" src="stickers/sticker_2.png" data-sticker="s2" alt="">
+        <canvas id="strip-canvas" width="10" height="10"></canvas>
+        <img class="design-preview-mascot cutout-badge" src="stickers/sticker_4.png" data-sticker="s4" alt="">
+      </div>
+      <div class="design-panel">
+        <h3>Layout</h3>
+        <div class="chips" id="opt-layout"></div>
+
+        <h3>Cut-Out Stickers on Strip</h3>
+        <div class="chips" id="opt-strip-stickers"></div>
+
+        <h3>Paper colour</h3>
+        <div class="swatches" id="opt-color"></div>
+
+        <div id="row-card" hidden>
+          <h3>Polaroid frame</h3>
+          <div class="swatches" id="opt-card"></div>
+        </div>
+
+        <h3>Background pattern</h3>
+        <div class="chips" id="opt-pattern"></div>
+
+        <h3>Caption</h3>
+        <input id="opt-caption" type="text" maxlength="28" placeholder="Love you Babyyy ♡" autocomplete="off">
+
+        <label class="switch-row"><span>Show date</span><input type="checkbox" id="opt-date" checked></label>
+        <input id="opt-date-value" type="date" class="date-input">
+
+        <label class="switch-row"><span>Film grain</span><input type="checkbox" id="opt-finish" checked></label>
+
+        <h3>Format</h3>
+        <div class="chips" id="opt-format"></div>
+        <div style="height:12px"></div>
+      </div>
+    </div>
+    <footer class="bottom-actions">
+      <button id="btn-share" class="btn btn-ghost" type="button">Share</button>
+      <button id="btn-download" class="btn btn-primary" type="button">Download ♡</button>
+    </footer>
+  </section>
+
+  <!-- ============ ERROR ============ -->
+  <section id="screen-error" class="screen">
+    <div class="error-card">
+      <img class="error-mascot cutout-badge" src="stickers/sticker_5.png" data-sticker="s5" alt="">
+      <h2 id="err-title">Camera access needed</h2>
+      <p id="err-text"></p>
+      <ol id="err-steps"></ol>
+      <div class="row">
+        <button id="btn-err-retry" class="btn btn-primary" type="button">Try again</button>
+        <button id="btn-err-demo" class="btn btn-ghost" type="button">Demo Mode ♡</button>
+        <button id="btn-err-home" class="btn btn-ghost" type="button">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXTRAS SHEET ============ -->
+  <div id="sheet-extras" class="sheet" hidden>
+    <div class="sheet-card">
+      <div class="sheet-handle"></div>
+      <h3><img class="cutout-badge" src="stickers/sticker_3.png" data-sticker="s3" alt=""><span>Stickers & Extras ✨</span></h3>
+      <div class="row-label">Photo Stickers</div>
+      <div class="chips" id="opt-stickers"></div>
+      <div class="row-label">Text on photo</div>
+      <input id="opt-photo-text" type="text" maxlength="22" placeholder="Love you Babyy ♡" autocomplete="off">
+      <label class="switch-row"><span>Flash</span><input type="checkbox" id="opt-flash" checked></label>
+      <label class="switch-row"><span>Film grain</span><input type="checkbox" id="opt-grain" checked></label>
+      <label class="switch-row"><span>Light leak</span><input type="checkbox" id="opt-leak"></label>
+      <button id="btn-extras-done" class="btn btn-primary btn-block" type="button">Done</button>
+    </div>
+  </div>
+
+  <!-- ============ NOTE MODAL ============ -->
+  <div id="modal-note" class="sheet center" hidden>
+    <div class="note-card">
+      <img class="note-mascot cutout-badge" src="stickers/sticker_8.png" data-sticker="s8" alt="">
+      <div class="note-hearts" aria-hidden="true">♡ ✦ ♡</div>
+      <p class="note-eyebrow">Love you MyCutiepie ♡</p>
+      <p class="note-text" id="note-text"></p>
+      <div class="row">
+        <button id="btn-note-more" class="btn btn-ghost" type="button">Another ♡</button>
+        <button id="btn-note-close" class="btn btn-primary" type="button">Thank you</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ IMAGE MODAL ============ -->
+  <div id="modal-image" class="sheet center dark" hidden>
+    <div class="image-wrap">
+      <img id="modal-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Your photo strip">
+      <p class="image-tip">Press and hold the picture to save it ♡</p>
+      <button id="btn-image-close" class="btn btn-primary" type="button">Close</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+</div>
+
+<script src="js/streamlit.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/decor.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/strip.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
