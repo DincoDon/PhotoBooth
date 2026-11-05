@@ -17,7 +17,7 @@ SETTINGS = {
         "Four little frames, and every single one of them is you being wonderful.",
         "I'd happily stand in a tiny photobooth with you forever, Adriana ♡",
         "Your smile is my favourite filter.",
-        "Some people are worth a whole roll of film. You're one of them.",
+        "Want a all PICSSSSSS.",
         "Hold on to this one. It's proof of how happy we look together.",
         "If I could, I'd keep every one of your laughs in a little strip like this.",
         "You're the best thing I never wanted to stop capturing.",
